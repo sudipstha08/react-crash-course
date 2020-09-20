@@ -18,6 +18,7 @@ const Header = () => {
 
   const handlePenIconClick = () => {
     setIsTitleDisabled(false)
+    if(penTitle === 'Untitled') { setPenTitle('') }
     titleRef.current.focus()
   }
 

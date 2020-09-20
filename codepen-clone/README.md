@@ -6,5 +6,5 @@
 4. npm i @fwesome/free-solid-svg-icons 
 5. npm i @fortawesome/fontawesome-svg-core
 
-
+https://css-tricks.com/auto-growing-inputs-textareas/
 
