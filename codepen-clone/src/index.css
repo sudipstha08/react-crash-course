@@ -1,9 +1,17 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', 'Lucida Grande', 'Lucida Sans Unicode', Tahoma, Sans-Serif;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
+  font-size: 16px;
 }
 
 .pane {
-  height: 50vh;
+  height: 45vh;
   display: flex;
 }
 

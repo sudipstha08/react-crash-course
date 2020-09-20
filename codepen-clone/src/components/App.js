@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Editor from './Editor'
 import useLocalStorage from './useLocalStorage'
+import Header from './Header'
 
 const App = () => {
   const [html, setHtml] = useLocalStorage('html', '')
@@ -27,6 +28,7 @@ const App = () => {
 
   return (
    <>
+    <Header />
     <div className="pane top-pane">
       <Editor   
         language="xml" 

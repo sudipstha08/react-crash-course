@@ -10,7 +10,8 @@ import 'codemirror/mode/css/css'
 import 'codemirror/addon/edit/closebrackets.js'
 import 'codemirror/addon/edit/closetag.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCompressAlt, faExpandAlt, faCode } from '@fortawesome/free-solid-svg-icons'
+import { faCompressAlt, faExpandAlt } from '@fortawesome/free-solid-svg-icons'
+import SettingsIcon from '../assets/settings.svg'
 
 const  Editor = ({ displayName, language, value, onChange }) => {
   const [open, setOpen] = useState(true)
@@ -22,8 +23,8 @@ const  Editor = ({ displayName, language, value, onChange }) => {
   return (
     <div className={`editor ${open ? '' : 'editor--collapsed'}`}>
       <div className="editor__title">
-        <div style={{ color: '#39c9a7' }}>
-          <FontAwesomeIcon icon={faCode} style={{ paddingRight: '.5rem', color:'#823be8' }}/>
+        <div style={{ color: '#39c9a7', display: 'flex', fontWeight:'600' }}>
+          <img src={SettingsIcon} alt="settings" height="18" style={{ paddingRight: '.25em', cursor: 'pointer' }} />
           {displayName}
         </div>
         <button 
