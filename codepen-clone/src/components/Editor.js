@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 import { Controlled as ControlledEditor } from 'react-codemirror2';
@@ -7,18 +7,32 @@ import 'codemirror/theme/material.css'
 import 'codemirror/mode/xml/xml'
 import 'codemirror/mode/javascript/javascript'
 import 'codemirror/mode/css/css'
+import 'codemirror/addon/edit/closebrackets.js'
+import 'codemirror/addon/edit/closetag.js'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCompressAlt, faExpandAlt, faCode } from '@fortawesome/free-solid-svg-icons'
 
 const  Editor = ({ displayName, language, value, onChange }) => {
+  const [open, setOpen] = useState(true)
 
-  const handleChange = () => {
+  const handleChange = (editor, data, value) => {
     onChange(value)
   }
 
   return (
-    <div className="editor">
+    <div className={`editor ${open ? '' : 'editor--collapsed'}`}>
       <div className="editor__title">
-        {displayName}
-        <button>O/C</button>
+        <div style={{ color: '#39c9a7' }}>
+          <FontAwesomeIcon icon={faCode} style={{ paddingRight: '.5rem', color:'#823be8' }}/>
+          {displayName}
+        </div>
+        <button 
+          type="button"
+          className="editor__expand-close-btn"
+          onClick={() => setOpen(prevOpen => !prevOpen)}
+        >
+          <FontAwesomeIcon icon={open ? faCompressAlt: faExpandAlt } />
+        </button>
       </div>
       <ControlledEditor
         onBeforeChange={handleChange}
@@ -29,7 +43,9 @@ const  Editor = ({ displayName, language, value, onChange }) => {
           lint: true,
           mode: language,
           lineNumbers: true,
-          theme: 'material'
+          theme: 'material',
+          autoCloseBrackets: true,
+          autoCloseTags: true
         }}
       />
     </div>
